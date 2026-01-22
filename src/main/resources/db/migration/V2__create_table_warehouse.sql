@@ -1,0 +1,9 @@
+
+
+CREATE TABLE warehouse (
+    id uuid PRIMARY KEY NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    cep VARCHAR(255) NOT NULL
+
+);
+
