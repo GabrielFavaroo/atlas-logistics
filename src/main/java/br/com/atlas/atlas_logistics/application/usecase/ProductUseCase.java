@@ -14,9 +14,11 @@ import br.com.atlas.atlas_logistics.domain.model.Product;
 import br.com.atlas.atlas_logistics.domain.repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class ProductUseCase {
 
     private final ProductRepository productRepository;

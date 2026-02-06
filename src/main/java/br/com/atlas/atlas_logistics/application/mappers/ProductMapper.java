@@ -9,10 +9,12 @@ import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product
 import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.PatchProductDTO;
 import br.com.atlas.atlas_logistics.domain.model.Product;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ProductMapper {
     public Product toCreateProduct(CreateProductDTO createProductDTO){
 
