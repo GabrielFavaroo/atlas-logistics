@@ -4,15 +4,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.io.Serializable;
+
 import java.util.UUID;
 
 @Entity
 @Table(name = "role")
-public class Role implements GrantedAuthority, Serializable {
+@EqualsAndHashCode
+public class Role implements GrantedAuthority{
 
     @Id
     private UUID id;
