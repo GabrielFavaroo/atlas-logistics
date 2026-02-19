@@ -25,6 +25,7 @@ public class UserRole {
     @JoinColumn(name = "role_id",nullable = false)
     private Role role;
 
+    @Column(nullable = false)
     private Boolean active;
 
     private LocalDateTime grantedAt;

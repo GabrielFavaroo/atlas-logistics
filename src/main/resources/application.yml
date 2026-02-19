@@ -1,0 +1,22 @@
+
+  spring:
+    application:
+      name: atlas-logistics
+    datasource:
+      url: jdbc:postgresql://localhost:5432/atlas-storage
+      username: postgres
+      password: '1414'
+    jpa:
+      hibernate:
+        ddl-auto: none
+    flyway:
+      baseline-on-migrate: true
+
+  server:
+    servlet:
+      session:
+        timeout: 60m
+
+  my:
+    app:
+      secret: rRMdgFTf2xneIM1WBiD8u1iMGmTruAL706vKfbJtKTInFKJsIenTPnmODlRwxD5v
