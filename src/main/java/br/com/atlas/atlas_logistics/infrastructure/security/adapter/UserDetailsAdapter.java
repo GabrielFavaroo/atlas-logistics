@@ -1,16 +1,13 @@
-package br.com.atlas.atlas_logistics.infrastructure;
+package br.com.atlas.atlas_logistics.infrastructure.security.adapter;
 
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.domain.model.UserRole;
-import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import tools.jackson.databind.introspect.TypeResolutionContext;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 public class UserDetailsAdapter implements UserDetails {
 

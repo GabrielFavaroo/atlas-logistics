@@ -1,9 +1,10 @@
-package br.com.atlas.atlas_logistics.infrastructure;
+package br.com.atlas.atlas_logistics.infrastructure.security.service;
 
-import br.com.atlas.atlas_logistics.domain.model.Role;
 import br.com.atlas.atlas_logistics.domain.model.UserRole;
 import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
-import org.springframework.http.ResponseEntity;
+import br.com.atlas.atlas_logistics.infrastructure.security.jwt.JwtTokenProvider;
+import br.com.atlas.atlas_logistics.infrastructure.web.dtos.AccountCredentialsDTO;
+import br.com.atlas.atlas_logistics.infrastructure.web.dtos.TokenDTO;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,7 +28,7 @@ public class AuthServices {
         this.userRepository = userRepository;
     }
 
-    public ResponseEntity<TokenDTO> signIn(AccountCredentialsDTO credentials){
+    public TokenDTO signIn(AccountCredentialsDTO credentials){
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -40,15 +41,18 @@ public class AuthServices {
         var user = userRepository.findByUsername(credentials.username()).orElseThrow(() -> new UsernameNotFoundException("Nome de usuario:" + credentials.username() + "não encontrado"));
 
 
-        List<Role> listRoles = new ArrayList<>();
+        List<String> listRoles = new ArrayList<>();
         for(UserRole ur : user.getRoles()){
             if(ur.getActive()){
-            listRoles.add(ur.getRole());}
+            listRoles.add(ur.getRole().getName());}
 
 
         }
         var tokenResponse = jwtTokenProvider.createAccessToken(credentials.username(), listRoles);
-        return ResponseEntity.ok(tokenResponse);
+        return tokenResponse;
     }
+
+
+
 
 }

@@ -1,7 +1,7 @@
-package br.com.atlas.atlas_logistics.infrastructure;
+package br.com.atlas.atlas_logistics.infrastructure.security.jwt;
 
 import br.com.atlas.atlas_logistics.domain.exception.InvalidJwtAuthenticationException;
-import br.com.atlas.atlas_logistics.domain.model.Role;
+import br.com.atlas.atlas_logistics.infrastructure.web.dtos.TokenDTO;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
@@ -33,7 +33,7 @@ public class JwtTokenProvider {
     @Value("${my.app.secret:fallback_default}")
     private String secretKey = "segredo";
 
-    @Value("${my.app.secret:fallback_default}")
+    @Value("${my.app.jwt.validity:3600}")
     private long validityInMinutes;
 
     Algorithm algorithm = null;
@@ -45,15 +45,15 @@ public class JwtTokenProvider {
 
     }
 
-    public TokenDTO createAccessToken(String username, List<Role> roles){
+    public TokenDTO createAccessToken(String username, List<String> roles){
         Date now = new Date();
-        Date validity = new Date(now.getTime()+validityInMinutes);
-        String accessToken = getAccessToken(username, roles,now, validity);
+        Date validity = new Date(now.getTime()+(validityInMinutes * 60000));
+        String accessToken = getAccessToken(username, roles, validity,now);
         String refreshToken = getRefreshToken(username, roles, now);
         return new TokenDTO(username, true, now, validity, accessToken, refreshToken);
     }
 
-    private String getRefreshToken(String username, List<Role> roles, Date now) {
+    private String getRefreshToken(String username, List<String> roles, Date now) {
         Date refreshTokenValidity = new Date(now.getTime()+(validityInMinutes*3));
         return JWT.create().
                 withClaim("roles", roles).
@@ -63,7 +63,7 @@ public class JwtTokenProvider {
                 sign(algorithm);
     }
 
-    private String getAccessToken(String username, List<Role> roles, Date validity, Date now) {
+    private String getAccessToken(String username, List<String> roles, Date validity, Date now) {
         String issuerUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         return JWT.create().
                 withClaim("roles", roles).

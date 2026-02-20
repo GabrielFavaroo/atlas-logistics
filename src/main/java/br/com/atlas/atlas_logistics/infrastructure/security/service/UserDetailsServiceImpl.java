@@ -1,7 +1,8 @@
-package br.com.atlas.atlas_logistics.infrastructure;
+package br.com.atlas.atlas_logistics.infrastructure.security.service;
 
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
+import br.com.atlas.atlas_logistics.infrastructure.security.adapter.UserDetailsAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

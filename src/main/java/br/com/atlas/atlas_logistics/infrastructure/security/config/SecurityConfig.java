@@ -1,6 +1,7 @@
-package br.com.atlas.atlas_logistics.infrastructure;
+package br.com.atlas.atlas_logistics.infrastructure.security.config;
 
-import com.auth0.jwt.algorithms.Algorithm;
+import br.com.atlas.atlas_logistics.infrastructure.security.jwt.JwtTokenFilter;
+import br.com.atlas.atlas_logistics.infrastructure.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

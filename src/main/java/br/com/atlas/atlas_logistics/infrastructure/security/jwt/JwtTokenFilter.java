@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.infrastructure;
+package br.com.atlas.atlas_logistics.infrastructure.security.jwt;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 import jakarta.servlet.FilterChain;

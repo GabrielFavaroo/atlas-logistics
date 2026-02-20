@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.infrastructure;
+package br.com.atlas.atlas_logistics.infrastructure.web.dtos;
 
 import java.util.Date;
 
