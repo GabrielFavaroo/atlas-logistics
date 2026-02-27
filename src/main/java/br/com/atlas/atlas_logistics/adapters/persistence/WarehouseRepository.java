@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.domain.repository;
+package br.com.atlas.atlas_logistics.adapters.persistence;
 
 import br.com.atlas.atlas_logistics.domain.model.Warehouse;
 import org.springframework.data.jpa.repository.JpaRepository;

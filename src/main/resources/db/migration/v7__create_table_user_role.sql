@@ -1,15 +1,15 @@
 CREATE TABLE user_role(
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID,
-    role_id UUID,
+    id uuid PRIMARY KEY NOT NULL,
+    user_id uuid,
+    role_id uuid,
     grantedAt TIMESTAMP,
-    revokedAt TIMESTAMP
+    revokedAt TIMESTAMP,
     active BOOLEAN DEFAULT TRUE,
-    grantedBy VARCHAR(255)
+    grantedBy VARCHAR(255),
 
     CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES users(id),
-    CONSTRAINT role_id FOREIGN KEY (role_id) REFERENCES role(id)
+    CONSTRAINT role_id FOREIGN KEY (role_id) REFERENCES roles(id)
 
 
 
-)
+);

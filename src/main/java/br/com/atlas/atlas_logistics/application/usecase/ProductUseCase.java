@@ -5,13 +5,12 @@ import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product
 import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.PatchProductDTO;
 import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ProductListDTO;
 
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ProductListItemDTO;
 import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ReturnProductDTO;
 import br.com.atlas.atlas_logistics.application.intent.ProductPatch;
 import br.com.atlas.atlas_logistics.application.mappers.ProductMapper;
 import br.com.atlas.atlas_logistics.domain.exception.BusinessException;
 import br.com.atlas.atlas_logistics.domain.model.Product;
-import br.com.atlas.atlas_logistics.domain.repository.ProductRepository;
+import br.com.atlas.atlas_logistics.adapters.persistence.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

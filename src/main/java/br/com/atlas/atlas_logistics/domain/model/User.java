@@ -25,7 +25,7 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id ;
 
     @Column(nullable = false,unique = true)
@@ -49,4 +49,7 @@ public class User {
 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
     private Set<UserRole> roles;
+
+    public User(String name, String email, String encodedPassword, boolean b, LocalDateTime date, LocalDateTime date1, Set<String> roles) {
+    }
 }

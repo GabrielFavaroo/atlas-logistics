@@ -54,7 +54,7 @@ public class ProductController {
    }
 
 
-   @PatchMapping("/id")
+   @PatchMapping("/{id}")
    public ResponseEntity<Void> patchProduct(@PathVariable(value = "id") UUID id, @RequestBody @Valid PatchProductDTO patchProductDTO){
 
         productUseCase.updateProductPartially(id,patchProductDTO);

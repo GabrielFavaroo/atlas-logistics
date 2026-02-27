@@ -1,5 +1,0 @@
-INSERT INTO role (name) VALUES
-('ADMIN'),
-('OPERATOR'),
-('INVENTORY'),
-('AUDITOR');

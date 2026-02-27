@@ -14,7 +14,7 @@ import java.util.UUID;
 public class UserRole {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne

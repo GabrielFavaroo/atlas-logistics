@@ -19,7 +19,7 @@ public class Stock implements Serializable {
     private static final long SerialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
 
