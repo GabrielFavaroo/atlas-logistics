@@ -68,6 +68,8 @@ public class ProductController {
    @GetMapping
    public ResponseEntity<ProductListDTO> getAllProducts(@RequestParam int page, @RequestParam int items){
 
+
+
         return ResponseEntity.status(HttpStatus.OK).body(productUseCase.listProducts(page,items));
    }
 

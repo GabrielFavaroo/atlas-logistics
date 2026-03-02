@@ -32,7 +32,7 @@ public class ProductUseCase {
 
 
 
-    public Product createProduct(CreateProductDTO createProductDTO){
+    public void createProduct(CreateProductDTO createProductDTO){
 
         Product product = productMapper.toCreateProduct(createProductDTO);
         if(productRepository.existsByName(product.getName())){
@@ -41,7 +41,6 @@ public class ProductUseCase {
         else{
             productRepository.save(product);
         }
-        return product;
 
     }
 
