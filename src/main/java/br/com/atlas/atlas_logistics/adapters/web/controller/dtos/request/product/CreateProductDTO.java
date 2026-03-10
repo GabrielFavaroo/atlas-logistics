@@ -2,6 +2,7 @@ package br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.produc
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.math.BigDecimal;
 

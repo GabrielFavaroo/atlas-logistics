@@ -8,9 +8,11 @@ import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.produc
 import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ReturnProductDTO;
 
 import br.com.atlas.atlas_logistics.application.usecase.ProductUseCase;
-import br.com.atlas.atlas_logistics.domain.model.Product;
+
 import jakarta.validation.Valid;
-import org.springframework.data.domain.Page;
+
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +21,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
-public class ProductController {
+public class ProductController implements CrudInterface<CreateProductDTO,PatchProductDTO,ProductListDTO,ReturnProductDTO,UUID>{
 
     private final ProductUseCase productUseCase;
 
@@ -29,7 +31,7 @@ public class ProductController {
 
 
     @PostMapping
-    public ResponseEntity<Void> saveProduct(@RequestBody @Valid CreateProductDTO createProductDTO){
+    public ResponseEntity<EntityModel<ReturnProductDTO>> save(@RequestBody @Valid CreateProductDTO createProductDTO){
 
         productUseCase.createProduct(createProductDTO);
 
@@ -38,7 +40,7 @@ public class ProductController {
 
 
    @DeleteMapping("/{id}")
-   public ResponseEntity<Void> deleteProduct(@PathVariable(value = "id") UUID id){
+   public ResponseEntity<Void> delete(@PathVariable(value = "id") UUID id){
         productUseCase.deleteProduct(id);
         return ResponseEntity.noContent().build();
    }
@@ -46,7 +48,7 @@ public class ProductController {
 
 
    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateProduct(@PathVariable(value="id") UUID id,@RequestBody @Valid CreateProductDTO createProductDTO){
+    public ResponseEntity<EntityModel<ReturnProductDTO>> update(@PathVariable(value="id") UUID id,@RequestBody @Valid CreateProductDTO createProductDTO){
 
         productUseCase.updateProductCompletely(id,createProductDTO);
 
@@ -55,7 +57,7 @@ public class ProductController {
 
 
    @PatchMapping("/{id}")
-   public ResponseEntity<Void> patchProduct(@PathVariable(value = "id") UUID id, @RequestBody @Valid PatchProductDTO patchProductDTO){
+   public ResponseEntity<EntityModel<ReturnProductDTO>> patch(@PathVariable(value = "id") UUID id, @RequestBody @Valid PatchProductDTO patchProductDTO){
 
         productUseCase.updateProductPartially(id,patchProductDTO);
 
@@ -66,7 +68,7 @@ public class ProductController {
 
 
    @GetMapping
-   public ResponseEntity<ProductListDTO> getAllProducts(@RequestParam int page, @RequestParam int items){
+   public ResponseEntity<CollectionModel<EntityModel<ProductListDTO>>> getAll(@RequestParam int page, @RequestParam int items){
 
 
 
@@ -76,12 +78,9 @@ public class ProductController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReturnProductDTO> getOneProduct(@PathVariable(value = "id") UUID id){
+    public ResponseEntity<EntityModel<ReturnProductDTO>> getOne(@PathVariable(value = "id") UUID id){
         return ResponseEntity.status(HttpStatus.OK).body(productUseCase.getProductForRead(id));
     }
-
-
-
 
 
 }
