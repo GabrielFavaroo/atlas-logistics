@@ -7,6 +7,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import br.com.atlas.atlas_logistics.adapters.web.controller.CrudInterface;
 import br.com.atlas.atlas_logistics.adapters.web.controller.ProductController;
 import br.com.atlas.atlas_logistics.infrastructure.security.config.SecurityConfig;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
@@ -16,10 +17,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 
-import java.util.Collection;
-import java.util.List;
-
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Function;
 
 @Component
 public class GenericAssembler {
@@ -31,7 +30,7 @@ public class GenericAssembler {
     }
 
 
-    public <c extends CrudInterface<?,?,listResponse,returnOneResponse,id>,listResponse,returnOneResponse,id>EntityModel<returnOneResponse>
+    public <c extends CrudInterface<?,?,listResponse,listResponseItems,returnOneResponse,id>,listResponse,listResponseItems,returnOneResponse,id>EntityModel<returnOneResponse>
     toModel(returnOneResponse dto,Class<c> controller, UUID id){
 
         EntityModel<returnOneResponse> model = EntityModel.of(dto);
@@ -70,10 +69,37 @@ public class GenericAssembler {
     }
 
 
+    public <c extends CrudInterface<?,?, listResponse,listResponseItems,returnOneResponse,id>,listResponse,listResponseItems,returnOneResponse,id>CollectionModel<EntityModel<listResponseItems>>
+    toListModel(List<listResponseItems> dto,Class<c> controller,Function<listResponseItems, id> extractId){
+
+        int defaultPageNumber = 0;
+        int defaultPageItemsCapability = 10;
+
+        List<EntityModel<listResponseItems>> modelList = new ArrayList<>();
+
+
+        for(listResponseItems lr : dto){
+            id objectId = extractId.apply(lr);
+            EntityModel<listResponseItems> model = EntityModel.of(lr);
+            model.add(linkTo(methodOn(controller).getOne((UUID) objectId)).withSelfRel());
+
+            modelList.add(model);
+        }
+
+
+        return CollectionModel.of(modelList,linkTo(methodOn(controller).getAll(defaultPageNumber,defaultPageItemsCapability)).withSelfRel());
+
+    }
+
+
     private boolean hasAuthority (Collection<? extends GrantedAuthority> reacheble, String authority){
 
         return reacheble.stream().anyMatch(a -> a.getAuthority().equals(authority));
     }
+
+
+
+
 
 
 

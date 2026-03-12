@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.UUID;
 
-public interface CrudInterface<createRequest,patchRequest,listResponse,returnOneResponse,id> {
+public interface CrudInterface<createRequest,patchRequest,listResponse,listResponseItems,returnOneResponse,id> {
 
     public ResponseEntity<EntityModel<returnOneResponse>> save(createRequest dto);
 
@@ -18,6 +18,6 @@ public interface CrudInterface<createRequest,patchRequest,listResponse,returnOne
 
     public ResponseEntity<EntityModel<returnOneResponse>> getOne(UUID id);
 
-    public ResponseEntity<CollectionModel<EntityModel<listResponse>>> getAll(int pages, int items);
+    public ResponseEntity<CollectionModel<EntityModel<listResponseItems>>> getAll(int pages, int items);
 
 }

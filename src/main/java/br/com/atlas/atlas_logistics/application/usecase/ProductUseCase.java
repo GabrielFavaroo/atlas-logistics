@@ -32,7 +32,7 @@ public class ProductUseCase {
 
 
 
-    public void createProduct(CreateProductDTO createProductDTO){
+    public ReturnProductDTO createProduct(CreateProductDTO createProductDTO){
 
         Product product = productMapper.toCreateProduct(createProductDTO);
         if(productRepository.existsByName(product.getName())){
@@ -41,6 +41,7 @@ public class ProductUseCase {
         else{
             productRepository.save(product);
         }
+        return productMapper.toGetProduct(product);
 
     }
 
@@ -65,7 +66,7 @@ public class ProductUseCase {
 
 
 
-    public void updateProductPartially(UUID id, PatchProductDTO patchProductDTO){
+    public ReturnProductDTO updateProductPartially(UUID id, PatchProductDTO patchProductDTO){
 
         ProductPatch updatedDataProduct = productMapper.toPatchProduct(patchProductDTO);
 
@@ -77,10 +78,11 @@ public class ProductUseCase {
 
 
         productRepository.save(product);
+        return productMapper.toGetProduct(product);
 
     }
 
-    public void updateProductCompletely(UUID id, CreateProductDTO createProductDTO){
+    public ReturnProductDTO updateProductCompletely(UUID id, CreateProductDTO createProductDTO){
 
         Product updatedDataProduct = productMapper.toCreateProduct(createProductDTO);
         Product product = getProductById(id);
@@ -91,7 +93,7 @@ public class ProductUseCase {
 
         productRepository.save(product);
 
-
+        return productMapper.toGetProduct(product);
 
     }
 
