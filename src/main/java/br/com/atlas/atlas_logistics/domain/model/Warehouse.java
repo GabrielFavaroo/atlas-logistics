@@ -4,6 +4,7 @@ package br.com.atlas.atlas_logistics.domain.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -17,6 +18,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name="warehouse")
+@NoArgsConstructor
 
 public class Warehouse implements Serializable {
 

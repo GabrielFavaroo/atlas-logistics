@@ -45,18 +45,18 @@ public class WarehouseController {
     public ResponseEntity<Void> patchWarehouse(@PathVariable UUID id){
         return ResponseEntity.ok().build();
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ReturnWarehouseDTO> getOneWarehouse(@PathVariable UUID id){
-
-        return ResponseEntity.status(HttpStatus.OK).body(returnWarehouseDTO);
-    }
-
-    @GetMapping
-    public ResponseEntity<WarehouseListDTO> getAllWarehouses(@PathVariable int page ){
-        return ResponseEntity.status(HttpStatus.OK).body(warehouseListDTO);
-    }
-
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<ReturnWarehouseDTO> getOneWarehouse(@PathVariable UUID id){
+//        ReturnWarehouseDTO returnWarehouseDTO
+//        return ResponseEntity.status(HttpStatus.OK).body(returnWarehouseDTO);
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity<WarehouseListDTO> getAllWarehouses(@PathVariable int page ){
+//        return ResponseEntity.status(HttpStatus.OK).body(warehouseListDTO);
+//    }
+//
 
 
 }

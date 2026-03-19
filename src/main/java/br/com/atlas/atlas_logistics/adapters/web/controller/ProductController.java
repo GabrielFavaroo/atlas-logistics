@@ -11,11 +11,18 @@ import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.produc
 
 import br.com.atlas.atlas_logistics.application.usecase.ProductUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +31,7 @@ import java.util.function.Function;
 
 @RestController
 @RequestMapping("/products")
+@Tag(name = "products",description = "Endpoints para administrar produtos")
 public class ProductController implements CrudInterface<CreateProductDTO,PatchProductDTO,ProductListDTO, ProductListItemDTO,ReturnProductDTO,UUID>{
 
     private final ProductUseCase productUseCase;
@@ -33,7 +41,22 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
         this.productUseCase = productUseCase;
         this.genericAssembler = genericAssembler;
     }
+    @Operation(summary = "Endpoints para administrar produtos",description = "Endpoints para administrar produtos",
+    tags = {"products","items"}
+    ,responses = {
+                  @ApiResponse(description = "Success",responseCode = "200", content = {
+                          @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, array = @ArraySchema(schema = @Schema(implementation = CollectionModel.class)))}),
+                  @ApiResponse(description = "No content",responseCode = "204", content = @Content),
+                  @ApiResponse(description = "Unauthorized",responseCode = "401", content = @Content),
+                  @ApiResponse(description = "Bad request",responseCode = "400", content = @Content),
+                  @ApiResponse(description = "Not found",responseCode = "404", content = @Content),
+                  @ApiResponse(description = "Internal Server Error",responseCode = "500", content = @Content)
 
+
+
+
+    }
+    )
 
     @PostMapping
     public ResponseEntity<EntityModel<ReturnProductDTO>> save(@RequestBody @Valid CreateProductDTO createProductDTO){

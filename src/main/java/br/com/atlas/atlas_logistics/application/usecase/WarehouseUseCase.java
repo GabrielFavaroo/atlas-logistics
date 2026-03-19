@@ -5,10 +5,12 @@ import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.warehou
 import br.com.atlas.atlas_logistics.application.mappers.WarehouseMapper;
 import br.com.atlas.atlas_logistics.domain.exception.BusinessException;
 import br.com.atlas.atlas_logistics.domain.model.Warehouse;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class WarehouseUseCase {
     private final WarehouseRepository warehouseRepository;
     private final WarehouseMapper warehouseMapper;
@@ -47,6 +49,6 @@ public class WarehouseUseCase {
     }
 
     private Warehouse findWarehouseById(UUID id) {
-        return warehouseRepository.findById(id).orElseThrow(() ->new BusinessException("Armazem não encoontrado na base de dados")) ;
+        return warehouseRepository.findById(id).orElseThrow(() ->new BusinessException("Armazem não encontrado na base de dados")) ;
     }
 }

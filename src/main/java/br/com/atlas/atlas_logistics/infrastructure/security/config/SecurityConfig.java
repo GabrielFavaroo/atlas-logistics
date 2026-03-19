@@ -75,7 +75,7 @@ public class SecurityConfig {
                         authorizeHttpRequests -> authorizeHttpRequests
                                 .requestMatchers("/auth/signin",
                                         "/auth/refresh/**",
-                                        "/swagger-ui/***",
+                                        "/swagger-ui/**",
                                         "/v3/api-docs").permitAll()
                                 .requestMatchers(HttpMethod.DELETE,"/products/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.POST,"/products").hasAuthority("OPERATOR")
