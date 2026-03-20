@@ -1,9 +1,9 @@
 package br.com.atlas.atlas_logistics.adapters.web.OpenApi;
 
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
+
 import io.swagger.v3.oas.models.info.Info;
-import org.springdoc.webmvc.ui.SwaggerConfig;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
