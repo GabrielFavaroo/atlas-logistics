@@ -16,6 +16,7 @@ import br.com.atlas.atlas_logistics.application.usecase.ProductUseCase;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+import jakarta.validation.constraints.Positive;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
@@ -78,7 +79,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
 
     @AtlasMultipleReturnOperation(summary = "Retorna uma parcela de items da base de dados baseado na filtragem estipulada pelo usuario", implementation = ProductListItemDTO.class)
    @GetMapping
-   public ResponseEntity<CollectionModel<EntityModel<ProductListItemDTO>>> getAll(@RequestParam int page, @RequestParam int items){
+   public ResponseEntity<CollectionModel<EntityModel<ProductListItemDTO>>> getAll(@RequestParam(defaultValue = "0",name = "page") @Positive int page, @RequestParam(defaultValue = "10",name = "items") @Positive int items){
 
        ProductListDTO productListDTO = productUseCase.listProducts(page,items);
 
