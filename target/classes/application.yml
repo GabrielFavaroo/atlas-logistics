@@ -14,11 +14,17 @@
     springdoc:
       hateoas:
         enabled: true
-      show-actuator: false
+      show-actuator: true
       api-docs:
         path: /api-docs
+        resolve-external-entities: true
       swagger-ui:
         path: /swagger-ui.html
+    messages:
+      basename: messages
+      encoding: UTF-8
+
+
 
 
   server:

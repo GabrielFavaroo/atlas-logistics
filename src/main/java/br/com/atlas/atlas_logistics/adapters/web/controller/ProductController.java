@@ -1,8 +1,7 @@
 package br.com.atlas.atlas_logistics.adapters.web.controller;
 
 
-import br.com.atlas.atlas_logistics.adapters.web.OpenApi.AtlasMultipleReturnOperation;
-import br.com.atlas.atlas_logistics.adapters.web.OpenApi.AtlasSingleReturnOperation;
+import br.com.atlas.atlas_logistics.adapters.web.OpenApi.AtlasReturnOperation;
 import br.com.atlas.atlas_logistics.adapters.web.assembly.GenericAssembler;
 import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.CreateProductDTO;
 import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.PatchProductDTO;
@@ -40,7 +39,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
         this.genericAssembler = genericAssembler;
     }
 
-    @AtlasSingleReturnOperation(summary = "Salva um produto na base de dados e retorna-o",implementation = ReturnProductDTO.class)
+    @AtlasReturnOperation(summary = "Salva um produto na base de dados e retorna-o")
     @PostMapping
     public ResponseEntity<EntityModel<ReturnProductDTO>> save(@RequestBody @Valid CreateProductDTO createProductDTO){
 
@@ -49,7 +48,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
         return ResponseEntity.status(HttpStatus.CREATED).body(genericAssembler.toModel(returnProductDTO, ProductController.class, returnProductDTO.id()));
     }
 
-    @AtlasSingleReturnOperation(summary = "Apaga um produto da base de dados")
+    @AtlasReturnOperation(summary = "Apaga um produto da base de dados")
    @DeleteMapping("/{id}")
    public ResponseEntity<Void> delete(@PathVariable(value = "id") UUID id){
         productUseCase.deleteProduct(id);
@@ -57,7 +56,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
    }
 
 
-   @AtlasSingleReturnOperation(summary = "Atualiza todos os campos de um produto", implementation = ReturnProductDTO.class)
+   @AtlasReturnOperation(summary = "Atualiza todos os campos de um produto")
    @PutMapping("/{id}")
     public ResponseEntity<EntityModel<ReturnProductDTO>> update(@PathVariable(value="id") UUID id,@RequestBody @Valid CreateProductDTO createProductDTO){
 
@@ -66,7 +65,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
         return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(returnProductDTO, ProductController.class,returnProductDTO.id()));
    }
 
-    @AtlasSingleReturnOperation(summary = "Atualiza somente os campos fornecidos de um produto", implementation = ReturnProductDTO.class)
+    @AtlasReturnOperation(summary = "Atualiza somente os campos fornecidos de um produto")
    @PatchMapping("/{id}")
    public ResponseEntity<EntityModel<ReturnProductDTO>> patch(@PathVariable(value = "id") UUID id, @RequestBody @Valid PatchProductDTO patchProductDTO){
 
@@ -76,9 +75,8 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
         return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(returnProductDTO, ProductController.class,returnProductDTO.id()));
    }
 
-
-    @AtlasMultipleReturnOperation(summary = "Retorna uma parcela de items da base de dados baseado na filtragem estipulada pelo usuario", implementation = ProductListItemDTO.class)
-   @GetMapping
+    @AtlasReturnOperation(summary = "Retorna uma lista de items seguindo os filtros de quantidade e pagina fornecidos pelo usuário")
+    @GetMapping("")
    public ResponseEntity<CollectionModel<EntityModel<ProductListItemDTO>>> getAll(@RequestParam(defaultValue = "0",name = "page") @Positive int page, @RequestParam(defaultValue = "10",name = "items") @Positive int items){
 
        ProductListDTO productListDTO = productUseCase.listProducts(page,items);
@@ -89,7 +87,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
    }
 
 
-    @AtlasSingleReturnOperation(summary = "Retorna um item referente ao id fornecido", implementation = ReturnProductDTO.class)
+    @AtlasReturnOperation(summary = "Retorna um item referente ao id fornecido")
     @GetMapping("/{id}")
     public ResponseEntity<EntityModel<ReturnProductDTO>> getOne(@PathVariable(value = "id") UUID id){
         return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(productUseCase.getProductForRead(id), ProductController.class,id));

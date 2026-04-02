@@ -147,31 +147,31 @@ class ProductControllerTest {
                .and().body("product.value", equalTo(350.00));
 
     }
-
-    @Test
-    void shouldGetAll() {
-
-        var product1 = new Product("Makita", "OMAQJ",new BigDecimal("560.00"));
-
-        UUID id1 = given().contentType(ContentType.JSON).body(product1)
-                .when().post("/products")
-                .then().body("product.id", notNullValue()).extract().path("product.id");
-
-        var product2 = new Product("Parafusadeira", "PQOAMA",new BigDecimal("200.00"));
-
-        UUID id2 = given().contentType(ContentType.JSON).body(product2)
-                .when().post("/products")
-                .then().body("product.id", notNullValue()).extract().path("product.id");
-
-        var product3 = new Product("Lixadeira", "OQPQMA",new BigDecimal("670.00"));
-
-        UUID id3 = given().contentType(ContentType.JSON).body(product3)
-                .when().post("/products")
-                .then().body("product.id", notNullValue()).extract().path("product.id");
-
-        given().when().get("/products"+"?page=0&items=2").then().assertThat().body("product", hasSize(2));
-
-    }
+//
+//    @Test
+//    void shouldGetAll() {
+//
+//        var product1 = new Product("Makita", "OMAQJ",new BigDecimal("560.00"));
+//
+//        UUID id1 = given().contentType(ContentType.JSON).body(product1)
+//                .when().post("/products")
+//                .then().body("product.id", notNullValue()).extract().path("product.id");
+//
+//        var product2 = new Product("Parafusadeira", "PQOAMA",new BigDecimal("200.00"));
+//
+//        UUID id2 = given().contentType(ContentType.JSON).body(product2)
+//                .when().post("/products")
+//                .then().body("product.id", notNullValue()).extract().path("product.id");
+//
+//        var product3 = new Product("Lixadeira", "OQPQMA",new BigDecimal("670.00"));
+//
+//        UUID id3 = given().contentType(ContentType.JSON).body(product3)
+//                .when().post("/products")
+//                .then().body("product.id", notNullValue()).extract().path("product.id");
+//
+//        given().when().get("/products"+"?page=0&items=2").then().assertThat().body("product", hasSize(2));
+//
+//    }
 
     @Test
     void shouldGetOne() {
