@@ -41,7 +41,6 @@ public class AuthenticationController {
 
 
     @PutMapping("/refresh/{username}")
-
     public ResponseEntity<TokenDTO> refresh (@PathVariable("username") String username, @RequestHeader("Authorization") String refreshToken){
         if(!authServices.areParametersValid(username,refreshToken)) return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         var token = authServices.signWithRefreshtoken(username,refreshToken);

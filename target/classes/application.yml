@@ -31,6 +31,9 @@
     servlet:
       session:
         timeout: 60m
+      encoding:
+        force-response: true
+        charset: UTF-8
 
   my:
     app:

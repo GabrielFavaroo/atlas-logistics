@@ -55,7 +55,7 @@ public class JwtTokenProvider {
 
     public TokenDTO refreshToken(String refreshToken){
         String token = "";
-        if(refershTokenConatinsBearer(refreshToken)) token =  refreshToken.substring("Bearer".length());
+        if(refreshTokenContainsBearer(refreshToken)) token =  refreshToken.substring("Bearer".length());
 
         JWTVerifier verifier = JWT.require(algorithm).build();
         DecodedJWT decodedJWT = verifier.verify(token);
@@ -65,7 +65,7 @@ public class JwtTokenProvider {
         return createAccessToken(username, roles);
     }
 
-    private static boolean refershTokenConatinsBearer(String refreshToken) {
+    private static boolean refreshTokenContainsBearer(String refreshToken) {
 
 
         return (StringUtils.isNotEmpty(refreshToken) && refreshToken.startsWith("Bearer "));
@@ -114,9 +114,7 @@ public class JwtTokenProvider {
         if(StringUtils.isNotEmpty(bearerToken) && bearerToken.startsWith("Bearer ")){
             return bearerToken.substring("Bearer ".length());
     }
-        else{
-            throw new InvalidJwtAuthenticationException("Token JWT invalido");
-        }
+        return null;
 
 }
     public boolean validateToken(String token){

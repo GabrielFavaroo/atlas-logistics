@@ -76,7 +76,7 @@ public class SecurityConfig {
                                 .requestMatchers("/auth/signin",
                                         "/auth/refresh/**",
                                         "/swagger-ui/**",
-                                        "/v3/api-docs").permitAll()
+                                        "/v3/api-docs/**").permitAll()
                                 .requestMatchers(HttpMethod.DELETE,"/products/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.POST,"/products").hasAuthority("OPERATOR")
                                 .requestMatchers(HttpMethod.PUT,"/products/**").hasAuthority("OPERATOR")

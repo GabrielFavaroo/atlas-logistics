@@ -103,8 +103,7 @@ public class AuthServices {
 
 
         }
-        var tokenResponse = jwtTokenProvider.createAccessToken(credentials.username(), listRoles);
-        return tokenResponse;
+        return jwtTokenProvider.createAccessToken(credentials.username(), listRoles);
     }
 
     public TokenDTO signWithRefreshtoken (String username,String refreshToken){
