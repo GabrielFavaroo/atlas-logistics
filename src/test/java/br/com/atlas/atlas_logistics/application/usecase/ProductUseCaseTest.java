@@ -2,9 +2,11 @@ package br.com.atlas.atlas_logistics.application.usecase;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.stereotype.Component;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Component
 class ProductUseCaseTest {
 
     @BeforeEach

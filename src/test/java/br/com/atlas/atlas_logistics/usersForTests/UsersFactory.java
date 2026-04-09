@@ -1,10 +1,12 @@
 package br.com.atlas.atlas_logistics.usersForTests;
 
 import br.com.atlas.atlas_logistics.domain.model.User;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Component
 public class UsersFactory {
 
     public User createAdmin(){

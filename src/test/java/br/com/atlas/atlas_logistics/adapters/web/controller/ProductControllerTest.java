@@ -11,10 +11,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.mapper.ObjectMapperType;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -27,7 +24,9 @@ import static org.hamcrest.Matchers.*;
 
 
 import io.restassured.matcher.RestAssuredMatchers.*;
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -35,30 +34,59 @@ import java.util.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ProductControllerTest {
+
+
+    static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16-alpine");
+
+    static {
+        postgres.start();
+    }
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry){
+        registry.add("spring.datasource.url",postgres::getJdbcUrl);
+        registry.add("spring.datasource.username",postgres::getUsername);
+        registry.add("spring.datasource.password",postgres::getPassword);
+
+    }
+
 
     @Autowired
     ProductRepository productRepository;
     @Autowired
-    static UserRepository userRepository;
+    UserRepository userRepository;
     @Autowired
-    static UsersFactory usersFactory;
+    UsersFactory usersFactory;
     @Autowired
-    static TokenProviderForTests tokenProviderForTests;
+    TokenProviderForTests tokenProviderForTests;
     @LocalServerPort
     private Integer port;
 
-    static String adminAccessToken;
-    static String operatorAccessToken;
-    static String inventoryAccessToken;
-    static String auditorAccessToken;
+    String adminAccessToken;
+    String operatorAccessToken;
+    String inventoryAccessToken;
+    String auditorAccessToken;
 
-    @Container
-    static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:18-alpine");
 
     @BeforeAll
-    static void start(){
-        postgres.start();
+    void start(){
+
+        //CREATE TABLE users(
+        //    id uuid PRIMARY KEY NOT NULL,
+        //    username VARCHAR(100) NOT NULL UNIQUE,
+        //    email VARCHAR(150) NOT NULL UNIQUE,
+        //    password VARCHAR(255) NOT NULL,
+        //    enabled BOOLEAN NOT NULL DEFAULT TRUE,
+        //    created_at TIMESTAMP NOT NULL DEFAULT now(),
+        //    updated_at TIMESTAMP NOT NULL DEFAULT now()
+        //
+        //);
+
+
+
+
+
         User admintest = usersFactory.createAdmin();
         User operatortest = usersFactory.createOperator();
         User inventorytest = usersFactory.createInventory();
@@ -80,21 +108,11 @@ class ProductControllerTest {
 
 
     @AfterAll
-    static void endUp(){
+    void endUp(){
         userRepository.deleteAll();
-        postgres.close();
-
 
     }
 
-
-    @DynamicPropertySource
-    static void configureProperties(DynamicPropertyRegistry registry){
-        registry.add("spring.datasource.url",postgres::getJdbcUrl);
-        registry.add("spring.datasource.username",postgres::getUsername);
-        registry.add("spring.datasource.password",postgres::getPassword);
-
-    }
 
 
 

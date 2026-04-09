@@ -2,10 +2,12 @@ package br.com.atlas.atlas_logistics;
 
 import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
+import org.springframework.stereotype.Component;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
+@Component
 public class TokenProviderForTests {
 
     public String receiveAccessToken(String username, String Password){
