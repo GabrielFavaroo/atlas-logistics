@@ -1,6 +1,7 @@
 package br.com.atlas.atlas_logistics.domain.model;
 
 
+import br.com.atlas.atlas_logistics.infrastructure.security.adapter.UserDetailsAdapter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -47,9 +48,17 @@ public class User {
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private Set<UserRole> roles;
 
-    public User(String name, String email, String encodedPassword, boolean b, LocalDateTime date, LocalDateTime date1, Set<String> roles) {
+    public User(String username, String email, String password, boolean enabled, LocalDateTime createdAt, LocalDateTime updatedAt, Set<UserRole> roles) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.enabled = enabled;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.roles = roles;
+
     }
 }

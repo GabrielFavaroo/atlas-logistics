@@ -18,8 +18,7 @@ import java.util.Optional;
 public class ProductMapper {
     public Product toCreateProduct(CreateProductDTO createProductDTO){
 
-        Product product = new Product(createProductDTO.name(), createProductDTO.sku(), createProductDTO.value());
-        return product;
+        return new Product(createProductDTO.name(), createProductDTO.sku(), createProductDTO.value());
     }
 
     public ProductPatch toPatchProduct(PatchProductDTO patchProductDTO){

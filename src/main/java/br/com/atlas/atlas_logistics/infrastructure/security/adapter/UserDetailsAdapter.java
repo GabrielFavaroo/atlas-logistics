@@ -2,6 +2,7 @@ package br.com.atlas.atlas_logistics.infrastructure.security.adapter;
 
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.domain.model.UserRole;
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

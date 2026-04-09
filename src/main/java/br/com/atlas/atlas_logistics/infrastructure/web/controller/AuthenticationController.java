@@ -26,6 +26,7 @@ public class AuthenticationController {
     @PostMapping("/signin")
     public ResponseEntity<TokenDTO> login (@RequestBody AccountCredentialsDTO requestDto){
 
+
         var token = authServices.signIn(requestDto);
         return ResponseEntity.status(HttpStatus.OK).body(token);
 

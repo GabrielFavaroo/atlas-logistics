@@ -51,7 +51,7 @@ public class AuthServices {
 
         Collection<? extends GrantedAuthority> creatorRoles = authentication.getAuthorities();
 
-        for(String role : createAccountDTO.roles()){
+        for(UserRole role : createAccountDTO.roles()){
 
             if(!userMayCreateUser(creatorRoles,role)){
                 throw new AccessDeniedException("Você não possui permissão para criar este usuário na base de dados");
@@ -71,7 +71,7 @@ public class AuthServices {
 
 
 
-    public boolean userMayCreateUser(Collection<? extends GrantedAuthority> userAuthorities, String requestedRole){
+    public boolean userMayCreateUser(Collection<? extends GrantedAuthority> userAuthorities, UserRole requestedRole){
 
          return userAuthorities.stream()
                  .map(GrantedAuthority::getAuthority)

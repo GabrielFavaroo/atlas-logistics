@@ -41,7 +41,7 @@ public class SecurityConfig {
 
 
 
-        PasswordEncoder pbkdf2Encoder = new Pbkdf2PasswordEncoder("",
+        PasswordEncoder pbkdf2Encoder = new Pbkdf2PasswordEncoder("segredo",
                 8,
                 185000,
                 Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA256);
@@ -77,12 +77,12 @@ public class SecurityConfig {
                                         "/auth/refresh/**",
                                         "/swagger-ui/**",
                                         "/v3/api-docs/**").permitAll()
-                                .requestMatchers(HttpMethod.DELETE,"/products/**").hasAuthority("ADMIN")
-                                .requestMatchers(HttpMethod.POST,"/products").hasAuthority("OPERATOR")
-                                .requestMatchers(HttpMethod.PUT,"/products/**").hasAuthority("OPERATOR")
-                                .requestMatchers(HttpMethod.PATCH,"/products").hasAuthority("INVENTORY")
-                                .requestMatchers(HttpMethod.GET,"/products/**").hasAuthority("AUDITOR")
-                                .requestMatchers(HttpMethod.GET,"/products").hasAuthority("AUDITOR")
+                                .requestMatchers(HttpMethod.DELETE,"/products/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST,"/products").hasRole("OPERATOR")
+                                .requestMatchers(HttpMethod.PUT,"/products/**").hasRole("OPERATOR")
+                                .requestMatchers(HttpMethod.PATCH,"/products").hasRole("INVENTORY")
+                                .requestMatchers(HttpMethod.GET,"/products/**").hasRole("AUDITOR")
+                                .requestMatchers(HttpMethod.GET,"/products").hasRole("AUDITOR")
 
                                 .requestMatchers("/products/**").authenticated()
 
@@ -99,7 +99,7 @@ public class SecurityConfig {
     @Bean
     public RoleHierarchy roleHierarchy (){
 
-        return RoleHierarchyImpl.fromHierarchy("ADMIN > OPERATOR > INVENTORY > AUDITOR");
+        return RoleHierarchyImpl.fromHierarchy("ROLE_ADMIN > ROLE_OPERATOR > ROLE_INVENTORY > ROLE_AUDITOR");
 
     }
 

@@ -11,10 +11,8 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.mapper.ObjectMapperType;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.restassured.parsing.Parser;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -27,7 +25,9 @@ import static org.hamcrest.Matchers.*;
 
 
 import io.restassured.matcher.RestAssuredMatchers.*;
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -35,59 +35,15 @@ import java.util.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ProductControllerTest {
 
-    @Autowired
-    ProductRepository productRepository;
-    @Autowired
-    static UserRepository userRepository;
-    @Autowired
-    static UsersFactory usersFactory;
-    @Autowired
-    static TokenProviderForTests tokenProviderForTests;
-    @LocalServerPort
-    private Integer port;
 
-    static String adminAccessToken;
-    static String operatorAccessToken;
-    static String inventoryAccessToken;
-    static String auditorAccessToken;
+    static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16-alpine");
 
-    @Container
-    static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:18-alpine");
-
-    @BeforeAll
-    static void start(){
+    static {
         postgres.start();
-        User admintest = usersFactory.createAdmin();
-        User operatortest = usersFactory.createOperator();
-        User inventorytest = usersFactory.createInventory();
-        User auditortest = usersFactory.createAuditor();
-
-
-        userRepository.save(admintest);
-        userRepository.save(operatortest);
-        userRepository.save(inventorytest);
-        userRepository.save(auditortest);
-
-        adminAccessToken = tokenProviderForTests.receiveAccessToken(admintest.getUsername(), admintest.getPassword());
-        operatorAccessToken = tokenProviderForTests.receiveAccessToken(operatortest.getUsername(), operatortest.getPassword());
-        inventoryAccessToken = tokenProviderForTests.receiveAccessToken(inventorytest.getUsername(), inventorytest.getPassword());
-        auditorAccessToken =  tokenProviderForTests.receiveAccessToken(auditortest.getUsername(), auditortest.getPassword());
-
-
     }
-
-
-    @AfterAll
-    static void endUp(){
-        userRepository.deleteAll();
-        postgres.close();
-
-
-    }
-
-
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry){
         registry.add("spring.datasource.url",postgres::getJdbcUrl);
@@ -95,6 +51,55 @@ class ProductControllerTest {
         registry.add("spring.datasource.password",postgres::getPassword);
 
     }
+
+
+    @Autowired
+    ProductRepository productRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    UsersFactory usersFactory;
+    @Autowired
+    TokenProviderForTests tokenProviderForTests;
+    @LocalServerPort
+    private Integer port;
+
+    String adminAccessToken;
+    String operatorAccessToken;
+    String inventoryAccessToken;
+    String auditorAccessToken;
+
+
+    @BeforeAll
+    void start(){
+
+        RestAssured.port = port;
+
+
+        User admintest = usersFactory.createAdmin();
+        User operatortest = usersFactory.createOperator();
+        User inventorytest = usersFactory.createInventory();
+        User auditortest = usersFactory.createAuditor();
+
+
+
+        userRepository.saveAll(List.of(admintest,operatortest,inventorytest,auditortest));
+
+        adminAccessToken = tokenProviderForTests.receiveAccessToken(admintest.getUsername(), "1234");
+        operatorAccessToken = tokenProviderForTests.receiveAccessToken(operatortest.getUsername(), "1234");
+        inventoryAccessToken = tokenProviderForTests.receiveAccessToken(inventorytest.getUsername(), "1234");
+        auditorAccessToken =  tokenProviderForTests.receiveAccessToken(auditortest.getUsername(), "1234");
+
+
+    }
+
+
+    @AfterAll
+    void endUp(){
+        userRepository.deleteAll();
+
+    }
+
 
 
 

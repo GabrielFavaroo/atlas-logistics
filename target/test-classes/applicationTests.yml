@@ -1,0 +1,37 @@
+
+spring:
+  application:
+    name: atlas-logistics
+#  datasource:
+#    url: jdbc:postgresql://localhost:5555/atlas-storage
+#    username: postgres
+#    password: '1515'
+  jpa:
+    hibernate:
+      ddl-auto: none
+  flyway:
+    baseline-on-migrate: true
+  springdoc:
+    hateoas:
+      enabled: true
+    show-actuator: true
+    api-docs:
+      path: /api-docs
+      resolve-external-entities: true
+    swagger-ui:
+      path: /swagger-ui.html
+  messages:
+    basename: messages
+    encoding: UTF-8
+
+
+
+
+server:
+  servlet:
+    session:
+      timeout: 60m
+
+my:
+  app:
+    secret: rRMdgFTf2xneIM1WBiD8u1iMGmTruAL706vKfbJtKTInFKJsIenTPnmODlRwxD5v
