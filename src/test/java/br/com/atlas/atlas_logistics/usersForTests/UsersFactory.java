@@ -1,26 +1,32 @@
 package br.com.atlas.atlas_logistics.usersForTests;
 
-import br.com.atlas.atlas_logistics.domain.model.Role;
+import br.com.atlas.atlas_logistics.adapters.web.controller.RoleSearchingForTests;
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.domain.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
+
 @Component
+@Transactional
 public class UsersFactory {
 
     @Autowired
      private PasswordEncoder encoder;
+    @Autowired
+    private RoleSearchingForTests roleSearchingForTests;
 
 
 
 
-    public User createAdmin(){
+
+
+    public User createAdmin() {
 
         User user = new User();
         user.setUsername("admin");
@@ -30,8 +36,9 @@ public class UsersFactory {
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
 
-        UserRole adminRole = new UserRole(user,new Role("ROLE_ADMIN"),true,LocalDateTime.now(),null,"test");
-        UserRole operatorRole = new UserRole(user,new Role("ROLE_OPERATOR"),true,LocalDateTime.now(),null,"test");
+
+        UserRole adminRole = new UserRole(user,roleSearchingForTests.findRole("ROLE_ADMIN"),true,LocalDateTime.now(),null,"test");
+        UserRole operatorRole = new UserRole(user,roleSearchingForTests.findRole("ROLE_OPERATOR"),true,LocalDateTime.now(),null,"test");
 
         user.setRoles(Set.of(adminRole,operatorRole));
 
@@ -49,7 +56,7 @@ public class UsersFactory {
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
 
-        UserRole operatorRole = new UserRole(user,new Role("ROLE_OPERATOR"),true,LocalDateTime.now(),null,"test");
+        UserRole operatorRole = new UserRole(user,roleSearchingForTests.findRole("ROLE_OPERATOR"),true,LocalDateTime.now(),null,"test");
 
         user.setRoles(Set.of(operatorRole));
 
@@ -68,7 +75,7 @@ public class UsersFactory {
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
 
-        UserRole inventoryRole = new UserRole(user,new Role("ROLE_INVENTORY"),true,LocalDateTime.now(),null,"test");
+        UserRole inventoryRole = new UserRole(user,roleSearchingForTests.findRole("ROLE_INVENTORY"),true,LocalDateTime.now(),null,"test");
 
 
         user.setRoles(Set.of(inventoryRole));
@@ -86,7 +93,7 @@ public class UsersFactory {
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
 
-        UserRole auditorRole = new UserRole(user,new Role("ROLE_AUDITOR"),true,LocalDateTime.now(),null,"test");
+        UserRole auditorRole = new UserRole(user,roleSearchingForTests.findRole("ROLE_AUDITOR"),true,LocalDateTime.now(),null,"test");
 
 
         user.setRoles(Set.of(auditorRole));

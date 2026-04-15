@@ -23,6 +23,12 @@ spring:
   messages:
     basename: messages
     encoding: UTF-8
+  datasource:
+    hikari:
+      connection-timeout: 30000
+      validation-timeout: 3000
+      maximum-pool-size: 20
+
 
 
 
@@ -31,6 +37,8 @@ server:
   servlet:
     session:
       timeout: 60m
+
+
 
 my:
   app:
