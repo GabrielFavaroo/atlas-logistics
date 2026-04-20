@@ -1,11 +1,11 @@
 package br.com.atlas.atlas_logistics.application.usecase;
 
 
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.CreateProductDTO;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.PatchProductDTO;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ProductListDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.CreateProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.PatchProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ProductListDTO;
 
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ReturnProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ReturnProductDTO;
 import br.com.atlas.atlas_logistics.application.intent.ProductPatch;
 import br.com.atlas.atlas_logistics.application.mappers.ProductMapper;
 import br.com.atlas.atlas_logistics.domain.exception.BusinessException;

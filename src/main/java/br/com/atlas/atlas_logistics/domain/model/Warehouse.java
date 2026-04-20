@@ -22,14 +22,6 @@ import java.util.UUID;
 
 public class Warehouse implements Serializable {
 
-    private static final long serialVersionUid = 1L;
-
-    public Warehouse(String name,String cep,Set<Stock> stock) {
-        this.cep = cep;
-        this.name = name;
-        this.stock = stock;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -40,8 +32,15 @@ public class Warehouse implements Serializable {
     @Column(nullable = false)
     private String cep;
 
-    @OneToMany(mappedBy = "warehouse",fetch = FetchType.LAZY)
 
+
+    public Warehouse(String name,String cep,Set<Stock> stock) {
+        this.cep = cep;
+        this.name = name;
+        this.stock = stock;
+    }
+
+    @OneToMany(mappedBy = "warehouse",fetch = FetchType.LAZY)
     private Set<Stock> stock = new HashSet<>();
 
 //    Sudeste	Cajamar,                    SP	07750-000  CD CAJ

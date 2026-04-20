@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.adapters.web.controller;
+package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 import br.com.atlas.atlas_logistics.adapters.persistence.RoleRepository;
 import br.com.atlas.atlas_logistics.domain.model.Role;

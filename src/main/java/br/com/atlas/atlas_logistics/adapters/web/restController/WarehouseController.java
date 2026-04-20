@@ -1,13 +1,8 @@
-package br.com.atlas.atlas_logistics.adapters.web.controller;
+package br.com.atlas.atlas_logistics.adapters.web.restController;
 
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.warehouse.CreateWarehouseDTO;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.warehouse.ReturnWarehouseDTO;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.warehouse.WarehouseListDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.warehouse.CreateWarehouseDTO;
 import br.com.atlas.atlas_logistics.application.usecase.WarehouseUseCase;
 import jakarta.validation.Valid;
-import org.jspecify.annotations.Nullable;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

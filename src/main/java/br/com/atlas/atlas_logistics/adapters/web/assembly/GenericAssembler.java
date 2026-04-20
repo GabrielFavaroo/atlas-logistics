@@ -4,14 +4,11 @@ package br.com.atlas.atlas_logistics.adapters.web.assembly;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-import br.com.atlas.atlas_logistics.adapters.web.controller.CrudInterface;
-import br.com.atlas.atlas_logistics.adapters.web.controller.ProductController;
+import br.com.atlas.atlas_logistics.adapters.web.restController.CrudInterface;
 import br.com.atlas.atlas_logistics.infrastructure.security.config.SecurityConfig;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 
-import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

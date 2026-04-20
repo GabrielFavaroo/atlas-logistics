@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.adapters.web.controller;
+package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 
 import com.jayway.jsonpath.JsonPath;

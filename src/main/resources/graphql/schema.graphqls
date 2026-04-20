@@ -1,0 +1,48 @@
+
+scalar BigDecimal
+scalar UUID
+scalar Set
+
+type Query {
+
+    getProductById(id : UUID) : Product
+    getAllProducts : [Product]
+    getProductByName(name : String) : [Product]
+
+
+}
+
+
+type Product{
+    id : UUID
+    name : String
+    sku : String
+    value : BigDecimal
+    stock : [Stock]
+
+
+}
+
+
+type Stock {
+
+    id : UUID
+    warehouse : Warehouse
+    product : Product
+    quantity : Int
+}
+
+type Warehouse {
+    id: UUID
+    name : String
+    cep : String
+    stock : [Stock]
+
+}
+
+type User {
+    id : UUID
+    name : String
+    email : String
+
+}

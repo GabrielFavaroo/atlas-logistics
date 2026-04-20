@@ -1,14 +1,14 @@
-package br.com.atlas.atlas_logistics.adapters.web.controller;
+package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 
 import br.com.atlas.atlas_logistics.adapters.web.OpenApi.AtlasReturnOperation;
 import br.com.atlas.atlas_logistics.adapters.web.assembly.GenericAssembler;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.CreateProductDTO;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.PatchProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.CreateProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.PatchProductDTO;
 
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ProductListDTO;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ProductListItemDTO;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.response.product.ReturnProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ProductListDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ProductListItemDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ReturnProductDTO;
 
 import br.com.atlas.atlas_logistics.application.usecase.ProductUseCase;
 

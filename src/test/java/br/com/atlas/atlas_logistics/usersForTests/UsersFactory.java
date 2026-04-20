@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.usersForTests;
 
-import br.com.atlas.atlas_logistics.adapters.web.controller.RoleSearchingForTests;
+import br.com.atlas.atlas_logistics.adapters.web.restController.RoleSearchingForTests;
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.domain.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;

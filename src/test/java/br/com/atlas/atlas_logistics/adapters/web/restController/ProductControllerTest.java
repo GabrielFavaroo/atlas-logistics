@@ -1,7 +1,7 @@
-package br.com.atlas.atlas_logistics.adapters.web.controller;
+package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 import br.com.atlas.atlas_logistics.adapters.persistence.ProductRepository;
-import br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.product.PatchProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.PatchProductDTO;
 import br.com.atlas.atlas_logistics.domain.model.Product;
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.math.BigDecimal;

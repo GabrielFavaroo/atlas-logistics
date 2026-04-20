@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.adapters.web.controller.dtos.request.warehouse;
+package br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.warehouse;
 
 import br.com.atlas.atlas_logistics.domain.model.Stock;
 import org.jspecify.annotations.Nullable;
