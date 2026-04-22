@@ -1,7 +1,7 @@
 package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 import br.com.atlas.atlas_logistics.adapters.persistence.ProductRepository;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.PatchProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.PatchProductDTO;
 import br.com.atlas.atlas_logistics.domain.model.Product;
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
@@ -32,12 +32,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureMockMvc
-@Testcontainers
-class ProductControllerTest {
+class ProductRestControllerTest {
 
-    @Container
+
     static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16-alpine");
 
+    static{
+        postgres.start();
+
+
+    }
 
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry){

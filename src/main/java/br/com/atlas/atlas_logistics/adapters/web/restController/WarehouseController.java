@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.adapters.web.restController;
 
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.warehouse.CreateWarehouseDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.request.warehouse.CreateWarehouseDTO;
 import br.com.atlas.atlas_logistics.application.usecase.WarehouseUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

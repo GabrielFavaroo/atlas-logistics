@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.warehouse;
+package br.com.atlas.atlas_logistics.adapters.web.dtos.response.warehouse;
 
 import br.com.atlas.atlas_logistics.domain.model.Stock;
 

@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product;
+package br.com.atlas.atlas_logistics.adapters.web.dtos.request.product;
 
 
 import jakarta.validation.constraints.Positive;

@@ -1,7 +1,7 @@
 package br.com.atlas.atlas_logistics.application.usecase;
 
 import br.com.atlas.atlas_logistics.adapters.persistence.WarehouseRepository;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.warehouse.CreateWarehouseDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.request.warehouse.CreateWarehouseDTO;
 import br.com.atlas.atlas_logistics.application.mappers.WarehouseMapper;
 import br.com.atlas.atlas_logistics.domain.exception.BusinessException;
 import br.com.atlas.atlas_logistics.domain.model.Warehouse;

@@ -3,9 +3,11 @@
     application:
       name: atlas-logistics
     datasource:
-      url: jdbc:postgresql://localhost:5432/atlas-storage
-      username: postgres
-      password: '1414'
+      url: ${SPRING_DATASOURCE_URL}
+      username: ${SPRING_DATASOURCE_USERNAME}
+      password: ${SPRING_DATASOURCE_PASSWORD}
+    elasticsearch:
+      uris: ${SPRING_ELASTIC_URIS}
     jpa:
       hibernate:
         ddl-auto: none

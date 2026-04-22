@@ -1,12 +1,12 @@
 package br.com.atlas.atlas_logistics.application.mappers;
 
 
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ProductListDTO;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ProductListItemDTO;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ReturnProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ProductListDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ProductListItemDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ReturnProductDTO;
 import br.com.atlas.atlas_logistics.application.intent.ProductPatch;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.CreateProductDTO;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.PatchProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.CreateProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.PatchProductDTO;
 import br.com.atlas.atlas_logistics.domain.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;

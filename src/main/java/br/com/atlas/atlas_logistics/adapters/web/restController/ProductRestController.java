@@ -3,12 +3,12 @@ package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 import br.com.atlas.atlas_logistics.adapters.web.OpenApi.AtlasReturnOperation;
 import br.com.atlas.atlas_logistics.adapters.web.assembly.GenericAssembler;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.CreateProductDTO;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.product.PatchProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.CreateProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.PatchProductDTO;
 
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ProductListDTO;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ProductListItemDTO;
-import br.com.atlas.atlas_logistics.adapters.web.restController.dtos.response.product.ReturnProductDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ProductListDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ProductListItemDTO;
+import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ReturnProductDTO;
 
 import br.com.atlas.atlas_logistics.application.usecase.ProductUseCase;
 
@@ -29,12 +29,12 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/products")
 @Tag(name = "products",description = "Endpoints para administrar produtos")
-public class ProductController implements CrudInterface<CreateProductDTO,PatchProductDTO,ProductListDTO, ProductListItemDTO,ReturnProductDTO,UUID>{
+public class ProductRestController implements CrudInterface<CreateProductDTO,PatchProductDTO,ProductListDTO, ProductListItemDTO,ReturnProductDTO,UUID>{
 
     private final ProductUseCase productUseCase;
     private final GenericAssembler genericAssembler;
 
-    public ProductController(ProductUseCase productUseCase, GenericAssembler genericAssembler){
+    public ProductRestController(ProductUseCase productUseCase, GenericAssembler genericAssembler){
         this.productUseCase = productUseCase;
         this.genericAssembler = genericAssembler;
     }
@@ -45,7 +45,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
 
         ReturnProductDTO returnProductDTO = productUseCase.createProduct(createProductDTO);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(genericAssembler.toModel(returnProductDTO, ProductController.class, returnProductDTO.id()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(genericAssembler.toModel(returnProductDTO, ProductRestController.class, returnProductDTO.id()));
     }
 
     @AtlasReturnOperation(summary = "Apaga um produto da base de dados")
@@ -62,7 +62,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
 
         ReturnProductDTO returnProductDTO = productUseCase.updateProductCompletely(id,createProductDTO);
 
-        return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(returnProductDTO, ProductController.class,returnProductDTO.id()));
+        return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(returnProductDTO, ProductRestController.class,returnProductDTO.id()));
    }
 
     @AtlasReturnOperation(summary = "Atualiza somente os campos fornecidos de um produto")
@@ -72,7 +72,7 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
         ReturnProductDTO returnProductDTO = productUseCase.updateProductPartially(id,patchProductDTO);
 
 
-        return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(returnProductDTO, ProductController.class,returnProductDTO.id()));
+        return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(returnProductDTO, ProductRestController.class,returnProductDTO.id()));
    }
 
     @AtlasReturnOperation(summary = "Retorna uma lista de items seguindo os filtros de quantidade e pagina fornecidos pelo usuário")
@@ -83,14 +83,14 @@ public class ProductController implements CrudInterface<CreateProductDTO,PatchPr
 
 
 
-        return ResponseEntity.ok(genericAssembler.toListModel(productListDTO.items(),ProductController.class,ProductListItemDTO::id));
+        return ResponseEntity.ok(genericAssembler.toListModel(productListDTO.items(), ProductRestController.class,ProductListItemDTO::id));
    }
 
 
     @AtlasReturnOperation(summary = "Retorna um item referente ao id fornecido")
     @GetMapping("/{id}")
     public ResponseEntity<EntityModel<ReturnProductDTO>> getOne(@PathVariable(value = "id") UUID id){
-        return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(productUseCase.getProductForRead(id), ProductController.class,id));
+        return ResponseEntity.status(HttpStatus.OK).body(genericAssembler.toModel(productUseCase.getProductForRead(id), ProductRestController.class,id));
     }
 
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__create_table_product.sql" value="31ccf8ac-6f4b-44b5-8284-3d02c3b106a1" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V2__create_table_warehouse.sql" value="31ccf8ac-6f4b-44b5-8284-3d02c3b106a1" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V3__create_table_stock.sql" value="31ccf8ac-6f4b-44b5-8284-3d02c3b106a1" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V4__create_table_roles.sql" value="31ccf8ac-6f4b-44b5-8284-3d02c3b106a1" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V5__insert_data_into_roles.sql" value="31ccf8ac-6f4b-44b5-8284-3d02c3b106a1" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V6__create_table_users.sql" value="31ccf8ac-6f4b-44b5-8284-3d02c3b106a1" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V7__create_table_user_role.sql" value="31ccf8ac-6f4b-44b5-8284-3d02c3b106a1" />
+  </component>
+</project>

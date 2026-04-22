@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.adapters.web.restController.dtos.request.warehouse;
+package br.com.atlas.atlas_logistics.adapters.web.dtos.request.warehouse;
 
 import br.com.atlas.atlas_logistics.domain.model.Stock;
 import jakarta.validation.constraints.NotBlank;
