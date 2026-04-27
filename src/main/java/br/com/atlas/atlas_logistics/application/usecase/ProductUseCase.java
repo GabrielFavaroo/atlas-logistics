@@ -9,7 +9,7 @@ import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ReturnPro
 import br.com.atlas.atlas_logistics.application.intent.ProductPatch;
 import br.com.atlas.atlas_logistics.application.mappers.ProductMapper;
 import br.com.atlas.atlas_logistics.domain.exception.BusinessException;
-import br.com.atlas.atlas_logistics.domain.model.Product;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Product;
 import br.com.atlas.atlas_logistics.adapters.persistence.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

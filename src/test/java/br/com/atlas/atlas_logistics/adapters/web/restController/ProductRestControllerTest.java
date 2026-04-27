@@ -2,7 +2,7 @@ package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 import br.com.atlas.atlas_logistics.adapters.persistence.ProductRepository;
 import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.PatchProductDTO;
-import br.com.atlas.atlas_logistics.domain.model.Product;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Product;
 import br.com.atlas.atlas_logistics.domain.model.User;
 import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
 import br.com.atlas.atlas_logistics.usersForTests.UsersFactory;
@@ -17,8 +17,6 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.math.BigDecimal;

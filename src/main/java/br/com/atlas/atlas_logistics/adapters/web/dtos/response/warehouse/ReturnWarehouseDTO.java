@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.adapters.web.dtos.response.warehouse;
 
-import br.com.atlas.atlas_logistics.domain.model.Stock;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Stock;
 
 import java.util.Set;
 import java.util.UUID;

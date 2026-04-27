@@ -1,0 +1,100 @@
+services:
+  backend:
+    image: atlas
+    depends_on:
+      - postgresDB
+      - elasticMasterNode
+      - elasticDataNode
+      - elasticIngest
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresDB:5432/atlas-storage
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=2222
+      - SPRING_ELASTIC_URIS=http://elasticDB:9200
+
+  postgresDB:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: atlas-storage
+      POSTGRES_PASSWORD: 2222
+      POSTGRES_USER: postgres
+    ports:
+      - "8888:5432"
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  elasticMasterNode:
+    image: elasticsearch:9.3.2
+    networks:
+      - atlasNetwork
+    container_name: masterNode
+    environment:
+      - discovery.type=multi-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=1515
+
+    ports:
+      - "9204:9200"
+    restart: unless-stopped
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+      - src/main/resources/elasticSearchConfiguration/MasterNode.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+
+  elasticDataNode:
+    image: elasticsearch:9.3.2
+    networks:
+      - atlasNetwork
+    container_name: dataNode
+    environment:
+      - discovery.type=multi-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=1515
+    ports:
+      - "9203:9200"
+    restart: unless-stopped
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+      - src/main/resources/elasticSearchConfiguration/DataNode.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+  elasticIngestNode:
+    image: elasticsearch:9.3.2
+    networks:
+      - atlasNetwork
+    container_name: ingestNode
+    environment:
+      - discovery.type=multi-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=1515
+    ports:
+      - "9202:9200"
+    restart: unless-stopped
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+      - src/main/resources/elasticSearchConfiguration/IngestNode.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+  elasticCoordinatingNode:
+    image: elasticsearch:9.3.2
+    networks:
+      - atlasNetwork
+    container_name: coordinatingNode
+    environment:
+      - discovery.type=multi-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=1515
+    ports:
+      - "9201:9200"
+    restart: unless-stopped
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+      - src/main/resources/elasticSearchConfiguration/CoordinatingNode.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+volumes:
+  postgres_data:
+  elastic_data:
+networks:
+  atlasNetwork:
+    driver: bridge
+

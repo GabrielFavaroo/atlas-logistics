@@ -1,8 +1,7 @@
-package br.com.atlas.atlas_logistics.domain.model;
+package br.com.atlas.atlas_logistics.domain.model.relationalModels.items;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

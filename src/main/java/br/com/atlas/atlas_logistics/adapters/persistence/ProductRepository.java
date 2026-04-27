@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.adapters.persistence;
 
-import br.com.atlas.atlas_logistics.domain.model.Product;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,0 +1,6 @@
+br\com\atlas\atlas_logistics\adapters\web\controller\TokenProviderForTests.class
+br\com\atlas\atlas_logistics\usersForTests\UsersFactory.class
+br\com\atlas\atlas_logistics\AtlasLogisticsApplicationTests.class
+br\com\atlas\atlas_logistics\adapters\web\controller\ProductControllerTest.class
+br\com\atlas\atlas_logistics\adapters\web\controller\RoleSearchingForTests.class
+br\com\atlas\atlas_logistics\application\usecase\ProductUseCaseTest.class

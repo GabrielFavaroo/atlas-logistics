@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.adapters.persistence;
 
-import br.com.atlas.atlas_logistics.domain.model.Stock;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

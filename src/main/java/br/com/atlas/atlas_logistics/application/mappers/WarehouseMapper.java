@@ -1,7 +1,7 @@
 package br.com.atlas.atlas_logistics.application.mappers;
 
 import br.com.atlas.atlas_logistics.adapters.web.dtos.request.warehouse.CreateWarehouseDTO;
-import br.com.atlas.atlas_logistics.domain.model.Warehouse;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Warehouse;
 import org.springframework.stereotype.Component;
 
 @Component

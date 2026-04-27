@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="35d4013d-c39f-4733-88b3-a923e7abf601" name="Changes" comment="Adicionando as imagens do banco de dados e do projeto no docker compose">
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/items/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/items/Stock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/items/Warehouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/CoordinatingNode.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/DataNode.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/IngestNode.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/MasterNode.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/StockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/StockRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/WarehouseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/WarehouseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/warehouse/CreateWarehouseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/warehouse/CreateWarehouseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/warehouse/PatchWarehouseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/warehouse/PatchWarehouseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/response/warehouse/ReturnWarehouseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/response/warehouse/ReturnWarehouseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/ProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/WarehouseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/WarehouseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/ProductUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/ProductUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/WarehouseUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/WarehouseUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/ProductDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/StockDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/WarehouseDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/transport/Shipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/transport/Shipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/transport/ShipmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/transport/ShipmentItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/transport/TransportStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/transport/TransportStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/ProductRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/ProductRestControllerTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="GraphQL File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GabrielFavaroo&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/GabrielFavaroo/atlas-logistics.git&quot;,
+    &quot;accountId&quot;: &quot;f543d47c-b72b-424e-9d2f-3ff48712938b&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3CPhr2NLCiIeYtWJJ9Wf0ZZVfJZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.test in atlas-logistics.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Orcadius/OneDrive/Desktop/work/atlas-logistics&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redis&quot;,
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.atlas.atlas_logistics.domain.model.documentModels" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="test in atlas-logistics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="atlas-logistics" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="35d4013d-c39f-4733-88b3-a923e7abf601" name="Changes" comment="" />
+      <created>1776293308476</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776293308476</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Mudança da ferramenta de testes, do RestAssured para o MockMvc">
+      <option name="closed" value="true" />
+      <created>1776296311050</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776296311050</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Atualização do formato de requisições, para Graphql para buscas e Rest para criação, remoção e etc">
+      <option name="closed" value="true" />
+      <created>1776649816127</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776649816127</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adicionando as imagens do banco de dados e do projeto no docker compose">
+      <option name="closed" value="true" />
+      <created>1776887695107</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1776887695107</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mudança da ferramenta de testes, do RestAssured para o MockMvc" />
+    <MESSAGE value="Atualização do formato de requisições, para Graphql para buscas e Rest para criação, remoção e etc" />
+    <MESSAGE value="Adicionando as imagens do banco de dados e do projeto no docker compose" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando as imagens do banco de dados e do projeto no docker compose" />
+  </component>
+</project>

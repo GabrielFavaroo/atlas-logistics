@@ -1,0 +1,5 @@
+cluster.name: atlas
+node.name: data
+network.host: 0.0.0.0
+node.roles: [master,data_cold]
+discovery.seed_hosts: ["elasticDataNode", "elasticCoordinatingNode", "elasticIngestNode"]
