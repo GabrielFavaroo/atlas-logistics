@@ -1,11 +1,10 @@
-package br.com.atlas.atlas_logistics.domain.model;
+package br.com.atlas.atlas_logistics.domain.model.relationalModels.users;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

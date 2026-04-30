@@ -1,7 +1,7 @@
 package br.com.atlas.atlas_logistics.adapters.web.restController;
 
 import br.com.atlas.atlas_logistics.adapters.persistence.RoleRepository;
-import br.com.atlas.atlas_logistics.domain.model.Role;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package br.com.atlas.atlas_logistics.domain.model;
+package br.com.atlas.atlas_logistics.domain.model.relationalModels.users;
 
 import jakarta.persistence.*;
 import lombok.*;

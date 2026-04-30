@@ -1,9 +1,8 @@
-package br.com.atlas.atlas_logistics.domain.model.documentModels;
+package br.com.atlas.atlas_logistics.domain.model.documentModels.items;
 
 
 import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Stock;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Setting;
+import org.springframework.data.elasticsearch.annotations.*;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -15,18 +14,19 @@ import java.util.UUID;
 @Setting(shards = 2, replicas = 2)
 public class ProductDocument{
 
+    @MultiField(mainField = @Field(type = FieldType.Text),otherFields = @InnerField(suffix = "", type = FieldType.Keyword))
     private UUID id;
 
-
+    @MultiField(mainField = @Field(type = FieldType.Text),otherFields = @InnerField(suffix = "", type = FieldType.Keyword))
     private String name;
 
-
+    @MultiField(mainField = @Field(type = FieldType.Text),otherFields = @InnerField(suffix = "", type = FieldType.Keyword))
      private String sku;
 
-
+    @Field(type = FieldType.Float)
      private BigDecimal value;
 
-
+    @Field(type = FieldType.Nested)
     private Set<Stock> stock = new HashSet<>();
 
     public ProductDocument(String name , String sku , BigDecimal value) {

@@ -1,7 +1,7 @@
 package br.com.atlas.atlas_logistics.infrastructure.security.service;
 
-import br.com.atlas.atlas_logistics.domain.model.User;
-import br.com.atlas.atlas_logistics.domain.model.UserRole;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.User;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.UserRole;
 import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
 import br.com.atlas.atlas_logistics.infrastructure.security.jwt.JwtTokenProvider;
 import br.com.atlas.atlas_logistics.infrastructure.web.dtos.AccountCredentialsDTO;
@@ -9,7 +9,6 @@ import br.com.atlas.atlas_logistics.infrastructure.web.dtos.CreateAccountDTO;
 import br.com.atlas.atlas_logistics.infrastructure.web.dtos.TokenDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

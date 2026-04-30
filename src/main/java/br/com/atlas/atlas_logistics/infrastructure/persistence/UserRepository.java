@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.infrastructure.persistence;
 
-import br.com.atlas.atlas_logistics.domain.model.User;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

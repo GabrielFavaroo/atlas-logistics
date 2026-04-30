@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.adapters.persistence;
 
-import br.com.atlas.atlas_logistics.domain.model.Role;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

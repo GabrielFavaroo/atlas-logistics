@@ -3,7 +3,7 @@ package br.com.atlas.atlas_logistics.adapters.web.restController;
 import br.com.atlas.atlas_logistics.adapters.persistence.ProductRepository;
 import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.PatchProductDTO;
 import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Product;
-import br.com.atlas.atlas_logistics.domain.model.User;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.User;
 import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
 import br.com.atlas.atlas_logistics.usersForTests.UsersFactory;
 import com.jayway.jsonpath.JsonPath;

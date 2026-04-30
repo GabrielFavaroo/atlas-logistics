@@ -1,7 +1,6 @@
-package br.com.atlas.atlas_logistics.domain.model;
+package br.com.atlas.atlas_logistics.domain.model.relationalModels.users;
 
 
-import br.com.atlas.atlas_logistics.infrastructure.security.adapter.UserDetailsAdapter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

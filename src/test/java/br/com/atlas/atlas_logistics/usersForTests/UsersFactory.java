@@ -1,8 +1,8 @@
 package br.com.atlas.atlas_logistics.usersForTests;
 
 import br.com.atlas.atlas_logistics.adapters.web.restController.RoleSearchingForTests;
-import br.com.atlas.atlas_logistics.domain.model.User;
-import br.com.atlas.atlas_logistics.domain.model.UserRole;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.User;
+import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
