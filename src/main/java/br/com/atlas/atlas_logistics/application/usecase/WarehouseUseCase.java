@@ -1,10 +1,10 @@
 package br.com.atlas.atlas_logistics.application.usecase;
 
-import br.com.atlas.atlas_logistics.adapters.persistence.WarehouseRepository;
-import br.com.atlas.atlas_logistics.adapters.web.dtos.request.warehouse.CreateWarehouseDTO;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.items.WarehouseEntity;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.repositories.WarehouseRepository;
+import br.com.atlas.atlas_logistics.api.dtos.request.warehouse.CreateWarehouseDTO;
 import br.com.atlas.atlas_logistics.application.mappers.WarehouseMapper;
 import br.com.atlas.atlas_logistics.domain.exception.BusinessException;
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Warehouse;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -21,14 +21,14 @@ public class WarehouseUseCase {
 
     public void createWarehouse(CreateWarehouseDTO createWarehouseDTO){
 
-        Warehouse warehouse = warehouseMapper.toCreateWarehouse(createWarehouseDTO);
+        WarehouseEntity warehouseEntity = warehouseMapper.toCreateWarehouse(createWarehouseDTO);
 
-        if(warehouseRepository.existsByName(warehouse.getName())){
+        if(warehouseRepository.existsByName(warehouseEntity.getName())){
             throw new BusinessException("O armazém ja existe na base de dados");
 
         }
         else {
-            warehouseRepository.save(warehouse);
+            warehouseRepository.save(warehouseEntity);
         }
 
 
@@ -36,18 +36,18 @@ public class WarehouseUseCase {
 
     public void deleteWarehouse(UUID id) {
 
-        Warehouse warehouse = findWarehouseById(id);
+        WarehouseEntity warehouseEntity = findWarehouseById(id);
 
-       if(!warehouse.getStock().isEmpty()){
+       if(!warehouseEntity.getStockEntity().isEmpty()){
            throw new BusinessException("Não é possível deletar um armazém contendo items em seu estoque");
        }
        else {
-           warehouseRepository.delete(warehouse);
+           warehouseRepository.delete(warehouseEntity);
        }
 
     }
 
-    private Warehouse findWarehouseById(UUID id) {
+    private WarehouseEntity findWarehouseById(UUID id) {
         return warehouseRepository.findById(id).orElseThrow(() ->new BusinessException("Armazem não encontrado na base de dados")) ;
     }
 }

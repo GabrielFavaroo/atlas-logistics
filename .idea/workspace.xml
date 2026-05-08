@@ -4,22 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35d4013d-c39f-4733-88b3-a923e7abf601" name="Changes" comment="Criado um cluster para o banco de dados nosql de busca. Atribuindo redes para comunicação e mapear as entidades ao modelo do banco">
+    <list default="true" id="35d4013d-c39f-4733-88b3-a923e7abf601" name="Changes" comment="Mapear os documentos para o banco ElasticSearch, com os tipos de cada campo planejados para busca full text, sort e etc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/config/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/users/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/users/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/users/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/ProductDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/items/ProductDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/StockDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/items/StockDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/WarehouseDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/items/WarehouseDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/Docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/Docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/repositories/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/ProductSearchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/repositories/ProductSearchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/repositories/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/StockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/repositories/StockRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/persistence/WarehouseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/repositories/WarehouseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/OpenApi/AtlasReturnOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/OpenApi/AtlasReturnOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/OpenApi/SwaggerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/OpenApi/SwaggerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/assembly/GenericAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/assembly/GenericAssembler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/product/CreateProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/request/product/CreateProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/product/PatchProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/request/product/PatchProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/stock/StockRecordDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/request/stock/StockRecordDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/warehouse/CreateWarehouseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/request/warehouse/CreateWarehouseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/request/warehouse/PatchWarehouseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/request/warehouse/PatchWarehouseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/response/product/ProductListDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/response/product/ProductListDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/response/product/ProductListItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/response/product/ProductListItemDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/response/product/ReturnProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/response/product/ReturnProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/response/warehouse/ReturnWarehouseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/response/warehouse/ReturnWarehouseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/dtos/response/warehouse/WarehouseListDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/dtos/response/warehouse/WarehouseListDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/graphqlController/ProductGraphqlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/graphqlController/ProductGraphqlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/restController/CrudInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/restController/CrudInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/restController/ProductRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/restController/ProductRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/restController/StockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/restController/StockController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/adapters/web/restController/WarehouseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/api/restController/WarehouseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/ProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/WarehouseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/mappers/WarehouseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/ProductUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/ProductUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/WarehouseUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/application/usecase/WarehouseUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/items/ProductDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/elastic/items/ProductDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/items/StockDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/elastic/items/StockDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/documentModels/items/WarehouseDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/elastic/items/WarehouseDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/items/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/items/ProductEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/items/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/items/StockEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/items/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/items/WarehouseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/transport/Shipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/transport/Shipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/transport/ShipmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/transport/ShipmentItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/transport/TransportStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/transport/TransportStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/users/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/users/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/domain/model/relationalModels/users/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/users/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/persistence/jpa/repositories/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/security/adapter/UserDetailsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/security/adapter/UserDetailsAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/security/service/AuthServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/security/service/AuthServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/security/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/security/service/UserDetailsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/web/dtos/CreateAccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/atlas/atlas_logistics/infrastructure/web/dtos/CreateAccountDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/ProductRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/ProductRestControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/RoleSearchingForTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/RoleSearchingForTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/CoordinatingNode.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/elasticsearch/CoordinatingNode.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/DataNode.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/elasticsearch/DataNode.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/IngestNode.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/elasticsearch/IngestNode.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/elasticSearchConfiguration/MasterNode.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/elasticsearch/MasterNode.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphql/schema.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphql/schema.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/ProductRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/api/restController/ProductEntityRestControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/RoleSearchingForTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/api/restController/RoleSearchingForTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/adapters/web/restController/TokenProviderForTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/api/restController/TokenProviderForTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/application/usecase/ProductUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/application/usecase/ProductEntityUseCaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/usersForTests/UsersFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/atlas/atlas_logistics/usersForTests/UsersFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,6 +136,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Orcadius\OneDrive\Desktop\work\atlas-logistics" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="br.com.atlas.atlas_logistics.domain.model.documentModels" />
     </key>
@@ -148,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777319293966</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Mapear os documentos para o banco ElasticSearch, com os tipos de cada campo planejados para busca full text, sort e etc">
+      <option name="closed" value="true" />
+      <created>1777578793867</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1777578793867</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,6 +220,7 @@
     <MESSAGE value="Atualização do formato de requisições, para Graphql para buscas e Rest para criação, remoção e etc" />
     <MESSAGE value="Adicionando as imagens do banco de dados e do projeto no docker compose" />
     <MESSAGE value="Criado um cluster para o banco de dados nosql de busca. Atribuindo redes para comunicação e mapear as entidades ao modelo do banco" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criado um cluster para o banco de dados nosql de busca. Atribuindo redes para comunicação e mapear as entidades ao modelo do banco" />
+    <MESSAGE value="Mapear os documentos para o banco ElasticSearch, com os tipos de cada campo planejados para busca full text, sort e etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mapear os documentos para o banco ElasticSearch, com os tipos de cada campo planejados para busca full text, sort e etc" />
   </component>
 </project>

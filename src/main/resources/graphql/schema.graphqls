@@ -18,7 +18,7 @@ type Product{
     name : String
     sku : String
     value : BigDecimal
-    stock : [Stock]
+    stockEntity : [Stock]
 
 
 }
@@ -27,8 +27,8 @@ type Product{
 type Stock {
 
     id : UUID
-    warehouse : Warehouse
-    product : Product
+    warehouseEntity : Warehouse
+    productEntity : Product
     quantity : Int
 }
 
@@ -36,7 +36,7 @@ type Warehouse {
     id: UUID
     name : String
     cep : String
-    stock : [Stock]
+    stockEntity : [Stock]
 
 }
 

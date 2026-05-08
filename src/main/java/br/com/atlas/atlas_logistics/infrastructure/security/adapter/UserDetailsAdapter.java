@@ -1,7 +1,7 @@
 package br.com.atlas.atlas_logistics.infrastructure.security.adapter;
 
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.User;
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.UserRole;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.users.User;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.users.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

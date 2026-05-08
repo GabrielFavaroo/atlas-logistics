@@ -1,0 +1,39 @@
+{
+  "analysis": {
+    "filter": {
+      "portuguese_stop": {
+        "type": "stop",
+        "stopwords": "_portuguese_"
+      },
+      "portuguese_stemmer": {
+        "type": "snowball",
+        "language": "Portuguese"
+      },
+      "autocomplete_filter": {
+        "type": "edge_ngram",
+        "min_gram": 1,
+        "max_gram": 20
+      }
+    },
+    "analyzer": {
+      "logistics_analyzer": {
+        "type": "custom",
+        "tokenizer": "standard",
+        "filter": [
+          "lowercase",
+          "asciifolding",
+          "portuguese_stop",
+          "portuguese_stemmer"
+        ]
+      },
+      "autocomplete_analyzer": {
+        "type": "custom",
+        "tokenizer": "standard",
+        "filter": [
+          "lowercase",
+          "autocomplete_filter"
+        ]
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 package br.com.atlas.atlas_logistics.infrastructure.security.service;
 
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.User;
-import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.users.User;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.repositories.UserRepository;
 import br.com.atlas.atlas_logistics.infrastructure.security.adapter.UserDetailsAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

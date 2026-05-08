@@ -1,13 +1,13 @@
 package br.com.atlas.atlas_logistics.application.mappers;
 
-import br.com.atlas.atlas_logistics.adapters.web.dtos.request.warehouse.CreateWarehouseDTO;
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Warehouse;
+import br.com.atlas.atlas_logistics.api.dtos.request.warehouse.CreateWarehouseDTO;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.items.WarehouseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WarehouseMapper {
-    public Warehouse toCreateWarehouse(CreateWarehouseDTO createWarehouseDTO) {
-        Warehouse warehouse = new Warehouse(createWarehouseDTO.name(), createWarehouseDTO.cep(), createWarehouseDTO.stock());
-        return warehouse;
+    public WarehouseEntity toCreateWarehouse(CreateWarehouseDTO createWarehouseDTO) {
+        WarehouseEntity warehouseEntity = new WarehouseEntity(createWarehouseDTO.name(), createWarehouseDTO.cep(), createWarehouseDTO.stockEntity());
+        return warehouseEntity;
     }
 }

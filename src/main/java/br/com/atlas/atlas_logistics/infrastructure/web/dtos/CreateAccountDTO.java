@@ -1,6 +1,6 @@
 package br.com.atlas.atlas_logistics.infrastructure.web.dtos;
 
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.UserRole;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.users.UserRole;
 
 import java.util.Set;
 

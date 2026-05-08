@@ -1,13 +1,13 @@
 package br.com.atlas.atlas_logistics.application.mappers;
 
 
-import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ProductListDTO;
-import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ProductListItemDTO;
-import br.com.atlas.atlas_logistics.adapters.web.dtos.response.product.ReturnProductDTO;
+import br.com.atlas.atlas_logistics.api.dtos.response.product.ProductListDTO;
+import br.com.atlas.atlas_logistics.api.dtos.response.product.ProductListItemDTO;
+import br.com.atlas.atlas_logistics.api.dtos.response.product.ReturnProductDTO;
 import br.com.atlas.atlas_logistics.application.intent.ProductPatch;
-import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.CreateProductDTO;
-import br.com.atlas.atlas_logistics.adapters.web.dtos.request.product.PatchProductDTO;
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.items.Product;
+import br.com.atlas.atlas_logistics.api.dtos.request.product.CreateProductDTO;
+import br.com.atlas.atlas_logistics.api.dtos.request.product.PatchProductDTO;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.items.ProductEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +16,9 @@ import java.util.Optional;
 
 @Component
 public class ProductMapper {
-    public Product toCreateProduct(CreateProductDTO createProductDTO){
+    public ProductEntity toCreateProduct(CreateProductDTO createProductDTO){
 
-        return new Product(createProductDTO.name(), createProductDTO.sku(), createProductDTO.value());
+        return new ProductEntity(createProductDTO.name(), createProductDTO.sku(), createProductDTO.value());
     }
 
     public ProductPatch toPatchProduct(PatchProductDTO patchProductDTO){
@@ -26,16 +26,16 @@ public class ProductMapper {
 
     }
 
-    public ReturnProductDTO toGetProduct (Product product){
-        return new ReturnProductDTO(product.getName(), product.getSku(), product.getValue(),product.getId());
+    public ReturnProductDTO toGetProduct (ProductEntity productEntity){
+        return new ReturnProductDTO(productEntity.getName(), productEntity.getSku(), productEntity.getValue(), productEntity.getId());
     }
 
-    public ProductListItemDTO toListItem(Product product){
-        return new ProductListItemDTO(product.getName(), product.getSku(), product.getValue(), product.getId());
+    public ProductListItemDTO toListItem(ProductEntity productEntity){
+        return new ProductListItemDTO(productEntity.getName(), productEntity.getSku(), productEntity.getValue(), productEntity.getId());
 
     }
 
-    public ProductListDTO toProductListDTO(Page<Product> page){
+    public ProductListDTO toProductListDTO(Page<ProductEntity> page){
         List<ProductListItemDTO> items = page.getContent().stream().map(this::toListItem).toList();
 
         return new ProductListDTO(items,page.getNumber(),page.getSize(),page.getTotalElements(), page.getTotalPages());

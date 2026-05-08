@@ -1,8 +1,8 @@
 package br.com.atlas.atlas_logistics.infrastructure.security.service;
 
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.User;
-import br.com.atlas.atlas_logistics.domain.model.relationalModels.users.UserRole;
-import br.com.atlas.atlas_logistics.infrastructure.persistence.UserRepository;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.users.User;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.users.UserRole;
+import br.com.atlas.atlas_logistics.infrastructure.persistence.jpa.repositories.UserRepository;
 import br.com.atlas.atlas_logistics.infrastructure.security.jwt.JwtTokenProvider;
 import br.com.atlas.atlas_logistics.infrastructure.web.dtos.AccountCredentialsDTO;
 import br.com.atlas.atlas_logistics.infrastructure.web.dtos.CreateAccountDTO;
